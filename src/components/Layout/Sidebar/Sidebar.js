@@ -3,12 +3,14 @@ import logo from "../../../logo.svg";
 import { FaSearch, FaPlus, FaRegQuestionCircle, FaReact } from "react-icons/fa";
 
 import SidebarItem from "./SidebarItem";
-import Search from "./Search/Search";
+import Search from "../Issue/Search/Search";
 import Modal from "../../Utilities/Modal";
+import CreateIssue from "../Issue/Create/CreateIssue";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showSearchIssue, setShowSearchIssue] = useState(false);
+  const [showCreateIssue, setShowCreateIssue] = useState(false);
 
   return (
     <div
@@ -30,21 +32,41 @@ const Sidebar = () => {
               title="search issues"
               show={isSidebarOpen}
               click={() => {
-                setShowModal(true);
+                setShowSearchIssue(true);
                 setIsSidebarOpen(false);
               }}
             >
               <FaSearch className="text-blue-100 text-xl" />
             </SidebarItem>
-            {showModal && (
-              
-              <Modal show={showModal} options={{closeButton: true}} setShow={setShowModal} className="left-0 top-0 h-full w-5/12">
+            {showSearchIssue && (
+              <Modal
+                show={showSearchIssue}
+                options={{ closeButton: true }}
+                setShow={setShowSearchIssue}
+                className="left-0 top-0 h-full w-5/12"
+              >
                 <Search />
               </Modal>
             )}
-            <SidebarItem show={isSidebarOpen} title="create issue">
+            <SidebarItem
+              show={isSidebarOpen}
+              title="create issue"
+              click={() => {
+                setShowCreateIssue(true);
+                setIsSidebarOpen(false);
+              }}
+            >
               <FaPlus className="text-blue-100 text-xl" />
             </SidebarItem>
+            {showCreateIssue && (
+              <Modal
+                show={showCreateIssue}
+                setShow={setShowCreateIssue}
+                className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              >
+                <CreateIssue />
+              </Modal>
+            )}
           </div>
         </div>
         <div>
