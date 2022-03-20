@@ -4,8 +4,8 @@ import { FaSearch } from "react-icons/fa";
 const Search = ({ show, setShow }) => {
   return (
     <div className="p-6">
-      <div className="pb-4">
-        <div className="flex gap-2 items-center border-b-2 border-blue-700 rounded py-1">
+      <div className="pb-4 pr-8">
+        <div className="flex gap-2 items-center border-b-2 border-blue-700 rounded pt-1 pb-2">
           <FaSearch className="text-xl text-gray-600" />
           <input
             type="text"

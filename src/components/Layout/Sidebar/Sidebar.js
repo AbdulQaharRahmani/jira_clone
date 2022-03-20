@@ -38,7 +38,7 @@ const Sidebar = () => {
             </SidebarItem>
             {showModal && (
               
-              <Modal show={showModal} setShow={setShowModal} className="left-0 h-full">
+              <Modal show={showModal} options={{closeButton: true}} setShow={setShowModal} className="left-0 top-0 h-full w-5/12">
                 <Search />
               </Modal>
             )}
