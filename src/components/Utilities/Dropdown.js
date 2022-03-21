@@ -30,6 +30,8 @@ const Dropdown = ({ setValue }) => {
     setSelected(item);
     setValue(item);
     setShowBody(false);
+    setSearchText("");
+    setList(fullList);
   };
 
   const closeButtonClicked = () => {
@@ -46,12 +48,13 @@ const Dropdown = ({ setValue }) => {
     };
   }, []);
 
-  const searchList = (searchText) => {
-    if (searchText=="") return setList(fullList);
+  const searchList = (inputValue) => {
+    if (inputValue == "") return setList(fullList);
 
-    const newArr = [...fullList].filter((item) =>
-        item.key !== selected.key && 
-      item.text.toLowerCase().includes(searchText.toLowerCase()) 
+    const newArr = fullList.filter(
+      (item) =>
+        item.key !== selected.key &&
+        item.text.toLowerCase().includes(inputValue.toLowerCase())
     );
     setList(newArr);
   };
@@ -99,35 +102,39 @@ const Dropdown = ({ setValue }) => {
               searchList(e.target.value);
             }}
           />
-          { selected && <p
-            className="py-1 px-4 text-xl text-gray-400 hover:text-gray-800 font-bold cursor-pointer"
-            onClick={closeButtonClicked}
-          >
-            x
-          </p>}
+          {selected && (
+            <p
+              className="py-1 px-4 text-xl text-gray-400 hover:text-gray-800 font-bold cursor-pointer"
+              onClick={closeButtonClicked}
+            >
+              x
+            </p>
+          )}
         </div>
 
         {list.length === 0 ? (
           <div className="px-4 text-gray-500 py-2">No Results</div>
         ) : (
-          list.map((item) => (
-              item.key !== selected.key && 
-            <div
-              onClick={() => itemClicked(item)}
-              className="flex items-center  gap-2 hover:bg-blue-200 px-4 py-2 cursor-pointer"
-              key={item.key}
-            >
-              <div className="w-5 h-5">
-                {item.icon || (
-                  <img
-                    src={item.image}
-                    className="rounded-full w-full h-full"
-                  />
-                )}
-              </div>
-              <p>{item.text}</p>
-            </div>
-          ))
+          list.map(
+            (item) =>
+              item.key !== selected.key && (
+                <div
+                  onClick={() => itemClicked(item)}
+                  className="flex items-center  gap-2 hover:bg-blue-200 px-4 py-2 cursor-pointer"
+                  key={item.key}
+                >
+                  <div className="w-5 h-5">
+                    {item.icon || (
+                      <img
+                        src={item.image}
+                        className="rounded-full w-full h-full"
+                      />
+                    )}
+                  </div>
+                  <p>{item.text}</p>
+                </div>
+              )
+          )
         )}
       </div>
     </div>

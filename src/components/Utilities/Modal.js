@@ -7,13 +7,18 @@ const Modal = ({
   children,
   className,
 }) => {
+
+
+
+  
   return (
+
     <div>
       {show && (
-        <div>
+        <div >
           {backdrop && <BackDrop click={() => setShow(false)} />}
           <div
-            className={`fixed w-1/2 p-3 bg-white text-gray-600 shadow-xl z-50  ${className} `}
+            className={`fixed w-1/2 p-3 bg-white text-gray-600 shadow-xl z-50 ${className} `}
           >
             {closeButton && (
               <button
