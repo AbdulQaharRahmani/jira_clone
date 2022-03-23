@@ -87,7 +87,7 @@ const Dropdown = ({ setValue }) => {
       </div>
       {/* Body */}
       <div
-        className={`shadow border absolute rounded top-9 w-full ${
+        className={`shadow border absolute rounded top-9 w-full  z-50 ${
           !showBody ? "hidden" : ""
         } bg-white`}
       >
