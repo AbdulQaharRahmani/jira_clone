@@ -5,7 +5,7 @@ const BreadCrumb = () => {
   return (
     <div className="flex text-gray-500">
       {titles.map((item, index) => (
-        <div >
+        <div key={index}>
           {item}
           {titles.length - 1 !== index && <span className="px-2">/</span>}
         </div>
