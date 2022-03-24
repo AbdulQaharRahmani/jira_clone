@@ -2,14 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.App {
-  text-align: center;
-}
-
-.q-max-h-11{
-  max-height: 80%;
-}
-.z-45{
-  z-index: 45;
-}
-

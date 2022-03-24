@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BreadCrumb from "../../Utilities/BreadCrumb";
 import Input from "../../Utilities/Input";
 import Contributers from "../../Utilities/Contributers/Contributers";
+import IssueContainer from "../Issue/Show/IssueContainer";
 const KanbanBoard = ({ className }) => {
   const [issueActive, setIssueActive] = useState(false);
   const [recentlyUpdatedActive, setRecentlyUpdatedActive] = useState(false);
@@ -11,10 +12,10 @@ const KanbanBoard = ({ className }) => {
   const recentlyUpdatedClick = (event) => {
     setRecentlyUpdatedActive(!recentlyUpdatedActive);
   };
-  const clearAll = ()=>{
-      setIssueActive(false);
-      setRecentlyUpdatedActive(false);
-  }
+  const clearAll = () => {
+    setIssueActive(false);
+    setRecentlyUpdatedActive(false);
+  };
 
   return (
     <div className={`p-8 ${className}`}>
@@ -24,7 +25,10 @@ const KanbanBoard = ({ className }) => {
         <h1 className="text-2xl font-bold py-2">Kanban board</h1>
         <div className="flex">
           <Input />
-          <Contributers />
+          <div className="px-4">
+            <Contributers />
+          </div>
+
           <div className="flex gap-2">
             <button
               className={`${
@@ -62,6 +66,12 @@ const KanbanBoard = ({ className }) => {
       </div>
 
       {/* Body */}
+      <div className="flex gap-2 h-96 items-stretch pt-8">
+        <IssueContainer title="Backlog 1"></IssueContainer>
+        <IssueContainer title="SELECTED FOR DEVELOPMENT 2"></IssueContainer>
+        <IssueContainer title="IN PROGRESS 1"></IssueContainer>
+        <IssueContainer title="DONE 2"></IssueContainer>
+      </div>
     </div>
   );
 };

@@ -34,26 +34,26 @@ const images = [
   },
 ];
 
-const Contributers = () => {
+const Contributers = ({className , hover=true}) => {
   const myImages =
     images.length > 3
       ? [
           images[0],
           images[1],
           {
-            extra:  <RemainingContributerCount key={images[2].id} size={images.length - 2} />
+            extra:  <RemainingContributerCount key={images[2].id} size={images.length - 2} className={className} hover={hover}/>
           },
         ]
       : images;
   return (
-    <div className="flex px-4">
+    <div className="flex">
       {myImages.map(
         (item) =>
           item.image ? (
             <img
               src={item.image}
               key={item.id}
-              className="w-9 h-9 rounded-full hover:-translate-y-1 -ml-1 transition-all duration-200 cursor-pointer object-cover border-2 border-white"
+              className={`w-9 h-9 rounded-full ${ hover && 'hover:-translate-y-1'} -ml-1 transition-all duration-200 cursor-pointer object-cover border-2 border-white ${className}`}
             />
           ): item.extra
       )}

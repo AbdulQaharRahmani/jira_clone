@@ -7,8 +7,11 @@ const Layout = () => {
     <div>
       <Sidebar />
       <div className="ml-16 flex">
+        <div className="w-56">
         <Navigation />
-          <KanbanBoard className="grow "/>
+        </div>
+       
+          <KanbanBoard className="grow-1 "/>
         
       </div>
     </div>
