@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { FaSearch, FaChevronDown } from "react-icons/fa";
-const Dropdown = ({ setValue }) => {
-  const fullList = [
-    { icon: <FaSearch />, text: "Ahmad", key: 1 },
-    {
-      image:
-        "https://images.unsplash.com/photo-1647695095872-3bcf1b53659a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-      text: "Karim",
-      key: 2,
-    },
-    { icon: <FaSearch />, text: "Sattar", key: 3 },
-  ];
+const Dropdown = ({ setValue  , fullList , chevron = true , className}) => {
+  // const fullList = [
+  //   { icon: <FaSearch />, text: "Ahmad", key: 1 },
+  //   {
+  //     image:
+  //       "https://images.unsplash.com/photo-1647695095872-3bcf1b53659a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+  //     text: "Karim",
+  //     key: 2,
+  //   },
+  //   { icon: <FaSearch />, text: "Sattar", key: 3 },
+  // ];
 
   const [showBody, setShowBody] = useState(false);
   const [selected, setSelected] = useState(fullList[0]);
@@ -27,6 +27,7 @@ const Dropdown = ({ setValue }) => {
   };
 
   const itemClicked = (item) => {
+    console.log("item clicked",showBody)
     setSelected(item);
     setValue(item);
     setShowBody(false);
@@ -64,12 +65,12 @@ const Dropdown = ({ setValue }) => {
       {/* Header */}
       <div>
         <div
-          className="flex justify-between items-center border border-gray-400 px-4 py-1 cursor-pointer bg-gray-100 hover:bg-gray-200 rounded"
+          className={`flex justify-between items-center border border-gray-400 px-4 py-1 cursor-pointer bg-gray-100 hover:bg-gray-200 rounded ${className}`}
           onClick={() => setShowBody(true)}
         >
           {selected ? (
             <div className="flex gap-2 items-center">
-              <div className="w-5 h-5">
+              <div className="w-5 h-5 flex items-center">
                 {selected.icon || (
                   <img
                     src={selected.image}
@@ -82,14 +83,14 @@ const Dropdown = ({ setValue }) => {
           ) : (
             <div className="text-gray-400">Select</div>
           )}
-          <FaChevronDown />
+          { chevron && <FaChevronDown />}
         </div>
       </div>
       {/* Body */}
       <div
         className={`shadow border absolute rounded top-9 w-full  z-50 ${
           !showBody ? "hidden" : ""
-        } bg-white`}
+        } bg-white min-w-[180px]`}
       >
         <div className="flex ">
           <input
@@ -123,7 +124,7 @@ const Dropdown = ({ setValue }) => {
                   className="flex items-center  gap-2 hover:bg-blue-200 px-4 py-2 cursor-pointer"
                   key={item.key}
                 >
-                  <div className="w-5 h-5">
+                  <div className="w-5 h-5 flex items-center">
                     {item.icon || (
                       <img
                         src={item.image}

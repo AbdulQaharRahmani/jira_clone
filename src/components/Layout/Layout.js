@@ -11,7 +11,7 @@ const Layout = () => {
         <Navigation />
         </div>
        
-          <KanbanBoard className="grow-1 "/>
+          <KanbanBoard className="grow "/>
         
       </div>
     </div>

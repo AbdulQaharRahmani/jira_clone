@@ -2,14 +2,26 @@ import React, { useState } from "react";
 import Dropdown from "../../../Utilities/Dropdown";
 import Modal from "../../../Utilities/Modal";
 import TextArea from "../../../Utilities/TextArea";
+import {FaSearch} from 'react-icons/fa'
+const fullList = [
+  { icon: <FaSearch />, text: "Ahmad", key: 1 },
+  {
+    image:
+      "https://images.unsplash.com/photo-1647695095872-3bcf1b53659a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    text: "Karim",
+    key: 2,
+  },
+  { icon: <FaSearch />, text: "Sattar", key: 3 },
+];
+
 const CreateIssue = () => {
   const [issueType, setIssueType] = useState({});
-
+ 
   return (
     <div className="p-6">
       <h1 className="font-bold text-xl pb-6">Create Issue</h1>
       <p className="text-sm font-bold py-1 text-gray-600">Issue Type</p>
-      <Dropdown setValue={setIssueType} />
+      <Dropdown setValue={setIssueType} fullList={fullList} />
       <p className="text-sm py-1 text-gray-600">
         Start typing to get a list of possible matches.
       </p>
@@ -35,14 +47,14 @@ const CreateIssue = () => {
 
       <div>
         <p className="text-sm font-bold py-1 text-gray-600">Reporter</p>
-        <Dropdown setValue={setIssueType} />
+        <Dropdown setValue={setIssueType} fullList={fullList} />
         <p className="text-sm py-1 text-gray-600">
           Start typing to get a list of possible matches.
         </p>
       </div>
       <div>
         <p className="text-sm font-bold py-1 text-gray-600">Reporter</p>
-        <Dropdown setValue={setIssueType} />
+        <Dropdown setValue={setIssueType} fullList={fullList} />
         <p className="text-sm py-1 text-gray-600">
           Start typing to get a list of possible matches.
         </p>

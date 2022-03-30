@@ -3,6 +3,7 @@ import BreadCrumb from "../../Utilities/BreadCrumb";
 import Input from "../../Utilities/Input";
 import Contributers from "../../Utilities/Contributers/Contributers";
 import IssueContainer from "../Issue/Show/IssueContainer";
+import Button from "../../Utilities/Button";
 const KanbanBoard = ({ className }) => {
   const [issueActive, setIssueActive] = useState(false);
   const [recentlyUpdatedActive, setRecentlyUpdatedActive] = useState(false);
@@ -30,26 +31,28 @@ const KanbanBoard = ({ className }) => {
           </div>
 
           <div className="flex gap-2">
-            <button
-              className={`${
-                issueActive
-                  ? " bg-blue-200 text-blue-900 "
-                  : " hover:bg-gray-200 "
-              } px-2 text-gray-600  rounded `}
+           
+            <Button
               onClick={myIssueClick}
+              className={
+                issueActive ?
+                "bg-blue-200 text-blue-900"
+                : "hover:bg-gray-100 "
+              }
             >
               Only My Issues
-            </button>
-            <button
-              className={`${
-                recentlyUpdatedActive
-                  ? " bg-blue-200 text-blue-900 "
-                  : " hover:bg-gray-200 "
-              } hover:bg-gray-200 px-2 text-gray-600 rounded `}
+            </Button>
+            <Button
               onClick={recentlyUpdatedClick}
+              className={
+                recentlyUpdatedActive ?
+                "bg-blue-200 text-blue-900"
+                : "hover:bg-gray-100 "
+              }
             >
               Recently Updated
-            </button>
+            </Button>
+           
             {(issueActive || recentlyUpdatedActive) && (
               <span className="border-r border-gray-400"></span>
             )}
